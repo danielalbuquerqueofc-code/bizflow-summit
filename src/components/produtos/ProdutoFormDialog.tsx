@@ -79,7 +79,7 @@ export function ProdutoFormDialog({ open, onOpenChange, product, onSuccess }: Pr
   const { data: categorias } = useQuery({
     queryKey: ['categorias_produtos'],
     queryFn: async () => {
-      const { data } = await supabase.from('categorias_produtos').select('id, nome').order('nome');
+      const { data } = await supabase.from('categorias_produtos').select('id, nome').order('nome') as any;
       return data || [];
     },
     enabled: open,

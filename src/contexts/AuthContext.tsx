@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .from('profiles')
       .select('tenant_id, nome, email')
       .eq('id', userId)
-      .single();
+      .single() as any;
     if (data) {
       setTenantId(data.tenant_id);
       setProfile({ nome: data.nome || '', email: data.email || '' });
