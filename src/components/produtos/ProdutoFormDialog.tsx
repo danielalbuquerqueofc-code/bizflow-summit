@@ -98,10 +98,10 @@ export function ProdutoFormDialog({ open, onOpenChange, product, onSuccess }: Pr
         cfop_padrao: values.cfop_padrao || null,
       };
       if (isEditing) {
-        const { error } = await supabase.from('produtos').update(payload).eq('id', product.id);
+        const { error } = await supabase.from('produtos').update(payload as any).eq('id', product.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from('produtos').insert(payload);
+        const { error } = await supabase.from('produtos').insert([payload] as any);
         if (error) throw error;
       }
     },
